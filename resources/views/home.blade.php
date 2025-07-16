@@ -32,6 +32,12 @@
                     <div style="background: gray; margin: 10px; padding: 10px;">
                         <h3>{{ $post->title }}</h3>
                         <p>{{ $post->body }}</p>
+                        <p><a href="edit-{{ $post->id }}">Edit</a></p>
+                        <form action="/delete-post/{{ $post->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
                     </div>
                 @endforeach
 

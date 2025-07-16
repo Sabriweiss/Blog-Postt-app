@@ -32,3 +32,4 @@ Route::post('/login', [UserController::class, 'login']);
 
 // Blog Post related routes
 Route::post('/create-post', [PostController::class, 'createPost']);
+Route::get('/edit-post/{post}', [PostController::class, 'editPost']);
