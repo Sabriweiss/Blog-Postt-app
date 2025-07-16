@@ -1,6 +1,9 @@
 <?php
 
+
+use App\Models\Post;
 use Illuminate\Support\Facades\Rine;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -15,9 +18,17 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $posts = [];
+    if (auth()->check())  {
+        // Fetch all posts for the authenticated user
+        $posts = auth()->user()->userPosts()->latest()->get();
+    }
+    return view('home', ['posts' => $posts]);
 });
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
+
+// Blog Post related routes
+Route::post('/create-post', [PostController::class, 'createPost']);

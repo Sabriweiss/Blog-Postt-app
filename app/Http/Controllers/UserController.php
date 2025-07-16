@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         $incomingFields = $request->validate([
             'name'=> ['required','min:3','max:20',Rule::unique('user_data','name')],
-            'password'=> ['required','min:8','max:200'],
+            'password'=> ['required','min:3','max:200'],
             'email'=> ['required','email',Rule::unique('user_data','email')]
         ]);
         
