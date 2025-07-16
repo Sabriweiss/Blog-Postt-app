@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Rine;
 use App\Http\Controllers\UserController;
 
 /*
@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::post('/register', [UserController::class, 'register']);
+Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/login', [UserController::class, 'login']);
