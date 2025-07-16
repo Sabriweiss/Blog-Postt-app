@@ -11,7 +11,17 @@
 <body>
     <h1>Welcome to the Home Page</h1>
     <p>This is the home page of the blog post application.</p>
-    <a href="{{ route('home') }}">Go to Home</a>
+    <div style="border: 3px solid black;">
+        <h2>Register</h2>
+        <form action="/register" method="POST">
+            @csrf
+            <p>Please fill in the details to register:</p>
+            <input name='name' type="text" placeholder="Enter your name" required>
+            <input name= 'email' type="email" placeholder="Enter your email" required>
+            <input name='password' type="password" placeholder="Enter your password" required>
+            <button>Register</button>
+        </form>
+    </div>
 </body>
 
 </html>
