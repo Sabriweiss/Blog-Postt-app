@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function register(Request $request)
     {
-        $incomngFields = $request->validate([
-            'name'=> ['required','min:3','max:10'],
+        $incomingFields = $request->validate([
+            'name'=> ['required','min:3','max:20'],
             'password'=> ['required','min:8','max:200'],
             'email'=> ['required','email']
             
@@ -17,6 +18,10 @@ class UserController extends Controller
 
         ]);
         
+        $incomingFields['password'] = bcrypt($incomingFields['password']);
+        dd($incomingFields);
+        User::create($incomingFields);
+
         return 'you are registered successfully';
     }
 }
