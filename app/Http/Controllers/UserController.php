@@ -40,9 +40,11 @@ class UserController extends Controller
         if (auth()->attempt(['name' => $incomingFields['loginname'], 'password' => $incomingFields['loginpassword']])) {
             $request->session()->regenerate();
 
-        return redirect('/');
+            return redirect('/');
     }
+        return redirect('/')
+        ->withInput()
+        ->withErrors(['loginerror' => 'Invalid username or password.']);
 
-        return back()->withErrors(['loginname' => 'Invalid credentials'])->onlyInput('loginname');
     }
 }

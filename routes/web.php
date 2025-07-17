@@ -5,6 +5,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Rine;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ErrorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,6 @@ Route::post('/login', [UserController::class, 'login']);
 // Blog Post related routes
 Route::post('/create-post', [PostController::class, 'createPost']);
 Route::get('/edit-post/{post}', [PostController::class, 'editPost']);
+Route::put('/edit-post/{post}', [PostController::class, 'updatePost']);
+Route::post('/error-page',[ErrorController::class,'showError']);
+Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
